@@ -6,6 +6,8 @@ import App from "./App.jsx";
 import TestConnection from "./utils/TestConnection.jsx";
 import ErrorPage from "./error-page.jsx";
 import CreateCrewmate from "./routes/CreateCrewmate.jsx";
+import Home from "./routes/Home.jsx";
+import ReadPost from "./routes/ReadPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: "test", element: <TestConnection /> },
       { path: "create", element: <CreateCrewmate /> },
+      { path: "home", element: <ReadPost /> },
     ],
   },
 ]);

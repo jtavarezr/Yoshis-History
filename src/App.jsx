@@ -3,6 +3,7 @@ import "./App.css";
 import TestConnection from "./utils/TestConnection";
 import { Link, Outlet } from "react-router-dom";
 import "./assets/crewmate.css";
+import Home from "./routes/Home";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +18,7 @@ function App() {
                 <a href="#">Welcome</a>
               </li>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
               </li>
 
               <li>
@@ -31,9 +32,7 @@ function App() {
         </aside>
 
         <section className="twitter">
-          <div className="container">
             <Outlet />
-          </div>
         </section>
         <nav>
           <ul>
