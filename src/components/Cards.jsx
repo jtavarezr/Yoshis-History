@@ -34,7 +34,7 @@ const Card = (props) => {
     <>
       <div className="card mb-3">
         <div className="card-body bg-secondary">
-          <Link to={"edit/" + props.id}>
+          <Link to={"/edit/" + props.id}>
             <img className="moreButton" alt="edit button" src={more} />
           </Link>
           <div className="card-header">
