@@ -19,8 +19,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/test", element: <TestConnection /> },
       { path: "/create", element: <CreateCrewmate /> },
-      { path: "/", element: <ReadPost /> },
-      { path: "/home", element: <ReadPost /> },
+      { path: "/", element: <Home /> },
+      { path: "/list/", element: <ReadPost /> },
       { path: "/edit/:id", element: <UpdateCrewmate /> },
     ],
   },

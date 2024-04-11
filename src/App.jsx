@@ -15,17 +15,13 @@ function App() {
           <nav className="nav">
             <ul>
               <li className="active">
-                <a href="#">Welcome</a>
+                <a href="/">Welcome</a>
               </li>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-
               <li>
                 <Link to="/create">Create New</Link>
               </li>
               <li>
-                <Link to="/Test">Go To Test Page</Link>
+                <Link to="/list">Go To Gallery!</Link>
               </li>
             </ul>
           </nav>
@@ -49,3 +45,14 @@ function App() {
 }
 
 export default App;
+/*
+
+Red
+Green
+Blue
+Purple
+Yellow
+Orange
+Pink
+Rainbow
+ */

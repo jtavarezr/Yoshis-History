@@ -1,11 +1,25 @@
 import React from "react";
 import { useState } from "react";
-import "./Card.css";
-import more from "./more.png";
+import "./poke.css";
 import { Link } from "react-router-dom";
 import supabase from "../utils/clients";
-const Card = (props) => {
-  const [count, setCount] = useState(props.likesCount);
+
+
+const Card = ({
+  likesCount,
+  id,
+  role,
+  experiencelevel,
+  name,
+  image,
+  attack,
+  defense,
+  speed,
+  category,
+  TypeColors,
+}) => {
+  
+  const [count, setCount] = useState(likesCount);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const updateCount = async () => {
@@ -13,7 +27,7 @@ const Card = (props) => {
       const { data, error } = await supabase
         .from("crewmates")
         .update({ likesCount: count + 1 })
-        .eq("id", props.id)
+        .eq("id", id)
         .select();
 
       if (error) {
@@ -30,35 +44,54 @@ const Card = (props) => {
     }
   };
 
+
+  
+
+
+
   return (
-    <>
-      <div className="card mb-3">
-        <div className="card-body bg-secondary">
-          <Link to={"/edit/" + props.id}>
-            <img className="moreButton" alt="edit button" src={more} />
-          </Link>
-          <div className="card-header">
-            <div className="title">{props.name}</div>
-          </div>
-
-          <div className="control-label">{props.role}</div>
-          <div className="control-label">{props.specialty}</div>
-          <h5 className="control-label">{props.experiencelevel}</h5>
-        </div>
-
-        <div className="card-footer">
-          <p className="control-label bg-secondary">{props.description}</p>
-
-          <button
-            className="btn btn-primary"
-            onClick={updateCount}
-            disabled={isUpdating}
-          >
+    <div className="containers">
+        <span className="edit">
+          {" "}
+          <Link to={`/edit/${id}`}>Edit</Link>
+        </span>
+      <div
+        className="cards "
+        style={{
+          background: `radial-gradient(circle at 50% 0%, ${TypeColors[role]} 36%, #ffffff 36%)`,
+        }}
+      >
+        <div className="title">
+          <p onClick={updateCount} className="like">
             👍 Like: {count ? count : 0}
-          </button>
+          </p>
+          <p className="hp">
+            <span>XP</span>
+            {experiencelevel}
+          </p>
+        </div>
+        <h2 className="poke-name">{name}</h2>
+        <img className="cards-img" src={image} alt="N/A" />
+        <div className="types">
+          <span style={{ backgroundColor: TypeColors[role] }}>{role}</span>
+        </div>
+        <span>{category}</span>
+        <div className="stats">
+          <div>
+            <h3>{attack}</h3>
+            <p>Attack</p>
+          </div>
+          <div>
+            <h3>{defense}</h3>
+            <p>Defense</p>
+          </div>
+          <div>
+            <h3>{speed}</h3>
+            <p>Speed</p>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
